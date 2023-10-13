@@ -2,6 +2,8 @@
 #include "imguiHelper/ImguiConsole.h"
 
 #include "sceneManager/sceneManager.h"
+#include <Windows.h>
+#include <shellapi.h>
 
 namespace TDS
 {
@@ -83,9 +85,9 @@ namespace TDS
 			console->AddLog("Opening fmod");
 			if (isOpenFMOD) {
 
-				const char* fmodStudioPath = "..\\Dependencies\\FMOD_Studio_2.02.17\\FMOD_Studio.exe";
-				const char* command = fmodStudioPath;
-				system(command);
+				/*const char* fmodStudioPath = "..\\Dependencies\\FMOD_Studio_2.02.17\\FMOD_Studio.exe";
+				const char* command = fmodStudioPath;*/
+				ShellExecute(0, L"open", L"..\\Dependencies\\FMOD_Studio_2.02.17\\FMOD_Studio.exe", NULL, NULL, SW_SHOWNORMAL);
 			}
 		}
 		ImGui::PopStyleColor();
@@ -114,6 +116,7 @@ namespace TDS
 			if (isSaveScene) {
 
 				SceneManager::GetInstance()->saveScene(SceneManager::GetInstance()->getCurrentScene());
+				SceneManager::GetInstance()->sceneSerialize();
 			}
 		}
 		ImGui::PopStyleColor();

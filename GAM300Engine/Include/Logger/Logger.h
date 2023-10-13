@@ -45,6 +45,7 @@ namespace TDS
 		Outputs spdlog info via output string stream for ImGui
 		****************************************************************************/
 		static std::string GetImguiLog();
+		
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
